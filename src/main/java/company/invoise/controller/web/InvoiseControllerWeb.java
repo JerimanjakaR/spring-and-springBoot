@@ -6,6 +6,7 @@ import company.invoise.service.InvoiseServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+//@Component : permet d'indiquer que c'est un component
 @Controller
 public class InvoiseControllerWeb implements InvoiseControllerInterface {
 

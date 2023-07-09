@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
 
+//@Component : permet d'indiquer que c'est un component
 @Controller
 public class InvoiseControllerConsole implements InvoiseControllerInterface {
     @Autowired
