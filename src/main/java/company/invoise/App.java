@@ -3,18 +3,19 @@ package company.invoise;
 import company.invoise.controller.InvoiseControllerInterface;
 import company.invoise.service.InvoiseServiceInterface;
 import company.invoise.service.web.InvoiseServiceWeb;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 
 /**
- * on peut mettre aussi ces configurations(@Configuration, @ComponentScan, @PropertySource) dans une autre class
+ * on peut mettre aussi ces configurations(@Configuration, @ComponentScan, @PropertySource)
+ * dans une autre class
  * exemple dans la classe AppConfig, on peut creer aussi un autre classe
  *
  */
-@Configuration
-//@ComponentScan(basePackages = {"company.invoise.controller.console,company.invoise.service.web,company.invoise.repository.Database"})
-@ComponentScan(basePackages = {"company.invoise.controller.scan,company.invoise.repository.Database"})
-@PropertySource("classpath:application.properties")
+
+@SpringBootApplication
 public class App 
 {
     public static void main( String[] args ) {
@@ -26,17 +27,22 @@ public class App
       //  ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
         //Configuration en utilisation une class de configuration Spring si on utilise App
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(App.class);
+       // ApplicationContext applicationContext = new AnnotationConfigApplicationContext(App.class);
+
+        //utilisant Spring boot
+        ApplicationContext applicationContext = SpringApplication.run(App.class, args);
 
         InvoiseControllerInterface invoiseController = applicationContext.getBean(InvoiseControllerInterface.class);
         invoiseController.createInvoise();
     }
 
-    //en utilisant l'annotation @Bean on peut specifier aussi le bean à utiliser
-    @Bean
+    //en utilisant l'annotation @Bean on peut specifier aussi le bean à utiliser, c'est un autre façon que le @ComponentScan
+   /* @Bean
     public InvoiseServiceInterface configureInvoiseService(){
         return new InvoiseServiceWeb();
     }
+
+    */
 
 
 }

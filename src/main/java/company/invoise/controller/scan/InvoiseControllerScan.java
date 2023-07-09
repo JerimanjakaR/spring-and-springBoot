@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 //@Component : permet d'indiquer que c'est un component
-@Controller
+//@Controller
 public class InvoiseControllerScan implements InvoiseControllerInterface {
     @Autowired
     private InvoiseServiceInterface invoiseService;
