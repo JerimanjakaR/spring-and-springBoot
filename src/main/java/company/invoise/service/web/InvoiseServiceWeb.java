@@ -1,0 +1,48 @@
+package company.invoise.service.web;
+
+import company.invoise.entity.Invoise;
+import company.invoise.repository.InvoiseRepositoryInterface;
+import company.invoise.service.InvoiseServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+@Service
+public class InvoiseServiceWeb  implements InvoiseServiceInterface {
+
+    @Value("${invoise.lastNumber}")
+    private Long lastNumber;
+    @Value("${invoise.prefix}")
+    private String prefix;
+
+    @Autowired
+    private InvoiseRepositoryInterface invoiseRepository;
+    public void createInvoise(Invoise invoise){
+        invoise.setNumber(prefix+String.valueOf(++lastNumber));
+        invoiseRepository.create(invoise);
+    }
+
+    public InvoiseRepositoryInterface getInvoiseRepository() {
+        return invoiseRepository;
+    }
+
+    public void setInvoiseRepository(InvoiseRepositoryInterface invoiseRepository) {
+        this.invoiseRepository = invoiseRepository;
+    }
+
+    public Long getLastNumber() {
+        return lastNumber;
+    }
+
+    public void setLastNumber(Long lastNumber) {
+        this.lastNumber = lastNumber;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+}
