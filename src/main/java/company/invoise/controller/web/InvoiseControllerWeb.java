@@ -6,6 +6,7 @@ import company.invoise.service.InvoiseServiceInterface;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -36,13 +37,11 @@ public class InvoiseControllerWeb implements InvoiseControllerInterface {
     }
 
     @RequestMapping("/invoise-home")
-    public String displayInvoise(HttpServletRequest request){
+    public @ModelAttribute("invoises") List<Invoise> displayInvoise(){
         System.out.println(" Afficher la liste des facturations existants ");
 
         List<Invoise> invoises = invoiseService.listInvoise();
 
-        request.setAttribute("invoises",invoises);
-
-        return "index";
+        return invoises;
     }
 }
