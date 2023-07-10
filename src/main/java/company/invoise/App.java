@@ -4,6 +4,7 @@ import company.invoise.controller.InvoiseControllerInterface;
 import company.invoise.service.InvoiseServiceInterface;
 import company.invoise.service.web.InvoiseServiceWeb;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
@@ -13,9 +14,18 @@ import org.springframework.context.annotation.*;
  * dans une autre class
  * exemple dans la classe AppConfig, on peut creer aussi un autre classe
  *
+ *
+ * Le SpringBootApplication est l'ensemble des annotations suivants
+ * @Configuration
+ * @ComponentScan
+ * @EnableAutoConfiguration // recherche une classe de configuration que ComponentScan ne detecte pas
+ *
  */
 
 @SpringBootApplication
+//@Configuration
+//@ComponentScan
+//@EnableAutoConfiguration
 public class App 
 {
     public static void main( String[] args ) {
