@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 //@Service
 public class InvoiseServiceScan implements InvoiseServiceInterface {
 
@@ -27,5 +29,10 @@ public class InvoiseServiceScan implements InvoiseServiceInterface {
     public void createInvoise(Invoise invoise) {
         invoise.setNumber("2000_"+String.valueOf(++lastNumber));
         invoiseRepository.create(invoise);
+    }
+
+    @Override
+    public List<Invoise> listInvoise() {
+        return invoiseRepository.list();
     }
 }

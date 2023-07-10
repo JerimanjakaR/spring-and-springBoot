@@ -2,6 +2,9 @@ package company.invoise.repository;
 
 import company.invoise.entity.Invoise;
 
+import java.util.List;
+
 public interface InvoiseRepositoryInterface {
-    public void create(Invoise invoise);
+    void create(Invoise invoise);
+    List<Invoise> list();
 }

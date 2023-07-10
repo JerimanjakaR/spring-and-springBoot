@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 //@Service
 public class InvoiseService  implements InvoiseServiceInterface {
 
@@ -26,5 +28,10 @@ public class InvoiseService  implements InvoiseServiceInterface {
 
     public void setInvoiseRepository(InvoiseRepositoryInterface invoiseRepository) {
         this.invoiseRepository = invoiseRepository;
+    }
+
+    @Override
+    public List<Invoise> listInvoise() {
+        return invoiseRepository.list();
     }
 }
